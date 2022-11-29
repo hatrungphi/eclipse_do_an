@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 21, 2022 3:37:39 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.model.Baiviet" table="baiviet" catalog="dbqbamthuc" optimistic-lock="version">
+        <id name="mabaiviet" type="java.lang.Integer">
+            <column name="mabaiviet" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="nguoidung" class="com.model.Nguoidung" fetch="select">
+            <column name="manguoidung" not-null="true" />
+        </many-to-one>
+        <property name="tenbaiviet" type="string">
+            <column name="tenbaiviet" length="100" not-null="true" />
+        </property>
+        <property name="mota" type="string">
+            <column name="mota" length="65535" not-null="true" />
+        </property>
+        <property name="nguyenlieu" type="string">
+            <column name="nguyenlieu" length="65535" not-null="true" />
+        </property>
+        <property name="cachlam" type="string">
+            <column name="cachlam" length="65535" not-null="true" />
+        </property>
+        <property name="hinh" type="string">
+            <column name="hinh" length="65535" />
+        </property>
+        <set name="danhgias" table="danhgia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mabaiviet" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Danhgia" />
+        </set>
+        <set name="theloais" table="theloai_baiviet" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="mabaiviet" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.model.Theloai">
+                <column name="matheloai" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 21, 2022 4:07:44 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.model.Danhgia" table="danhgia" catalog="dbqbamthuc" optimistic-lock="version">
+        <id name="madanhgia" type="java.lang.Integer">
+            <column name="madanhgia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="baiviet" class="com.model.Baiviet" lazy="false" fetch="select">
+            <column name="mabaiviet" not-null="true" />
+        </many-to-one>
+        <property name="binhluan" type="string">
+            <column name="binhluan" length="65535" />
+        </property>
+        <property name="diem" type="java.lang.Integer">
+            <column name="diem" />
+        </property>
+    </class>
+</hibernate-mapping>

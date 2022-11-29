@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 21, 2022 3:37:39 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.model.Taikhoan" table="taikhoan" catalog="dbqbamthuc" optimistic-lock="version">
+        <composite-id name="id" class="com.model.TaikhoanId">
+            <key-property name="tentaikhoan" type="string">
+                <column name="tentaikhoan" length="30" />
+            </key-property>
+            <key-property name="matkhau" type="string">
+                <column name="matkhau" length="10" />
+            </key-property>
+            <key-property name="manguoidung" type="int">
+                <column name="manguoidung" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="nguoidung" class="com.model.Nguoidung" update="false" insert="false" fetch="select">
+            <column name="manguoidung" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

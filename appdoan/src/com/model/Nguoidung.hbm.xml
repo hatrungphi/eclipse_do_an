@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 21, 2022 4:07:44 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.model.Nguoidung" table="nguoidung" catalog="dbqbamthuc" optimistic-lock="version">
+        <id name="manguoidung" type="java.lang.Integer">
+            <column name="manguoidung" />
+            <generator class="identity" />
+        </id>
+        <property name="tennguoidung" type="string">
+            <column name="tennguoidung" length="30" not-null="true" />
+        </property>
+        <property name="sodienthoai" type="string">
+            <column name="sodienthoai" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="ngaysinh" type="date">
+            <column name="ngaysinh" length="10" not-null="true" />
+        </property>
+        <property name="hinhdaidien" type="string">
+            <column name="hinhdaidien" length="65535" />
+        </property>
+        <set name="taikhoans" table="taikhoan" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="manguoidung" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Taikhoan" />
+        </set>
+        <set name="baiviets" table="baiviet" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="manguoidung" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Baiviet" />
+        </set>
+    </class>
+</hibernate-mapping>
