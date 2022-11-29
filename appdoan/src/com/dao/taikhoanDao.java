@@ -23,6 +23,7 @@ public class taikhoanDao {
 		tkid.setTentaikhoan(user);
 		tkid.setMatkhau(password);
 		tkid.setManguoidung(2);
+		
 		tk.setId(tkid);
 		ses.save(tk);
 		ses.getTransaction().commit();
