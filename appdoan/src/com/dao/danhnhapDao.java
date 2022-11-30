@@ -32,14 +32,6 @@ public void SignUp(String tennguoidung, String soDT, String tenDangNhap, String 
 	ses.beginTransaction();
 	Taikhoan tk = new Taikhoan();
 	
-	
-	
-	
-	
-	
-	
-	
-	
 //	Nguoidung nguoidung = tk.getNguoidung();
 //	nguoidung.setTennguoidung(tennguoidung);
 //	nguoidung.setSodienthoai(soDT);
